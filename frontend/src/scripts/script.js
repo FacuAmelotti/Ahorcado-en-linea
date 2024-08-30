@@ -24,13 +24,23 @@ const errorSound = new Audio('src/audio/error.mp3');
 const victorySound = new Audio('src/audio/victoria.mp3');
 const defeatSound = new Audio('src/audio/derrota.mp3');
 
+// Array de colores para cada paso
+const backgroundColors = [
+    'white',   // Color inicial
+    '#9d9595', // Primer error
+    '#493a3a', // Segundo error
+    '#331d1d', // Tercer error
+    '#452020', // Cuarto error
+    '#3f0c0c'  // Quinto error (muerte)
+];
+
 function getRandomWord() {
     return words[Math.floor(Math.random() * words.length)];
 }
 
 function initializeGame() {
-    // Reset the background color and hide the defeat image
-    document.body.classList.remove('red-background', 'green-background');
+    // Reinicia el fondo al color inicial y oculta la imagen de derrota
+    document.body.style.backgroundColor = backgroundColors[0];
     hangmanImage.src = `src/images/hangman0.png`;
 
     currentWord = getRandomWord();
@@ -71,12 +81,12 @@ function updateHangmanImage() {
 }
 
 function updateLivesDisplay() {
-    livesDisplay.textContent = `Vidas restantes: ${lives}`;
+    livesDisplay.textContent = `Vidas: ${lives}`;
 }
 
 function updateBackground() {
-    const redIntensity = Math.min(255, (maxLives - lives) * 50);
-    document.body.style.backgroundColor = `rgb(${redIntensity}, 0, 0)`;
+    // Cambia el fondo según el número de vidas restantes
+    document.body.style.backgroundColor = backgroundColors[maxLives - lives];
 }
 
 function guessLetter(letter, button) {
@@ -105,7 +115,7 @@ function guessLetter(letter, button) {
     if (lives === 0) {
         gameOver = true;
         defeatSound.play();
-        document.body.style.backgroundColor = 'red'; // Fondo rojo al perder
+        document.body.style.backgroundColor = backgroundColors[backgroundColors.length - 1]; // Fondo rojo al perder
 
         setTimeout(() => {
             alert('¡Perdiste! La palabra era ' + currentWord);
@@ -114,7 +124,7 @@ function guessLetter(letter, button) {
     } else if (!wordDisplay.textContent.includes('_')) {
         gameOver = true;
         victorySound.play();
-        document.body.style.backgroundColor = 'green'; // Fondo verde al ganar
+        document.body.style.backgroundColor = '#547f61'; // Fondo verde al ganar
 
         setTimeout(() => {
             alert('¡Ganaste! La palabra era ' + currentWord);
