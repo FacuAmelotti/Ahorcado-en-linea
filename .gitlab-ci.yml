@@ -1,13 +1,17 @@
-# .gitlab-ci.yml
 image: node:latest
 
 pages:
   stage: deploy
   script:
-    - mkdir .public
-    - cp -r frontend/* .public/
+    - mkdir -p public/src/scripts
+    - mkdir -p public/src/images
+    - mkdir -p public/src/styles
+    - cp index.html public/
+    - cp -r frontend/src/scripts/* public/src/scripts/
+    - cp -r frontend/src/images/* public/src/images/
+    - cp -r frontend/src/styles/* public/src/styles/
   artifacts:
     paths:
-      - .public
+      - public
   only:
     - main  # O la rama en la que estás trabajando
