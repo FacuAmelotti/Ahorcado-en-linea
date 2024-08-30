@@ -1,0 +1,57 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1 {
+    font-size: 1.5rem; /* Título más pequeño */
+    margin-bottom: 20px;
+}
+
+.hangman img {
+    width: 300px; /* Imagen más grande */
+    height: auto;
+}
+
+.lives {
+    margin-bottom: 20px;
+    font-size: 0.9rem; /* Texto de vidas más pequeño */
+}
+
+.word {
+    font-size: 2.5rem; /* Palabra destacada */
+    margin: 20px 0;
+}
+
+.letters {
+    margin: 20px 0;
+}
+
+button {
+    font-size: 0.9rem; /* Botones un poco más pequeños */
+    margin: 5px;
+    padding: 8px;
+}
+
+button.disabled {
+    background-color: #ddd;
+    cursor: not-allowed;
+}
+
+.wrong-letters {
+    margin: 20px 0;
+    color: red;
+}
+
+.red-background {
+    background-color: rgb(92, 43, 43) !important;
+}

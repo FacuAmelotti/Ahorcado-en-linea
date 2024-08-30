@@ -1,0 +1,13 @@
+# .gitlab-ci.yml
+image: node:latest
+
+pages:
+  stage: deploy
+  script:
+    - mkdir .public
+    - cp -r frontend/* .public/
+  artifacts:
+    paths:
+      - .public
+  only:
+    - main  # O la rama en la que estás trabajando

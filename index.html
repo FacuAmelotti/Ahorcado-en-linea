@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego del Ahorcado</title>
+    <link rel="stylesheet" href="frontend/src/styles/index.css">
+</head>
+<body>
+    <div class="container">
+        <div class="hangman">
+            <img id="hangmanImage" src="frontend/src/images/hangman0.png" alt="Ahorcado">
+        </div>
+        <div class="lives">
+            <h2 id="livesDisplay">Vidas restantes: 5</h2> <!-- Elemento para mostrar las vidas restantes -->
+        </div>
+        <div class="word">
+            <h2 id="wordDisplay">____</h2>
+        </div>
+        <div class="letters">
+            <div id="letterButtons"></div>
+        </div>
+        <div class="wrong-letters">
+            <h3>Letras Incorrectas:</h3>
+            <p id="wrongLetters"></p>
+        </div>
+    </div>
+    <script src="frontend/src/scripts/script.js"></script>
+</body>
+</html>
