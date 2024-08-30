@@ -18,13 +18,19 @@ const letterButtons = document.getElementById('letterButtons');
 const wrongLettersDisplay = document.getElementById('wrongLetters');
 const livesDisplay = document.getElementById('livesDisplay'); // Elemento para vidas
 
+// Cargar sonidos
+const correctSound = new Audio('src/audio/correcto.mp3');
+const errorSound = new Audio('src/audio/error.mp3');
+const victorySound = new Audio('src/audio/victoria.mp3');
+const defeatSound = new Audio('src/audio/derrota.mp3');
+
 function getRandomWord() {
     return words[Math.floor(Math.random() * words.length)];
 }
 
 function initializeGame() {
     // Reset the background color and hide the defeat image
-    document.body.classList.remove('red-background');
+    document.body.classList.remove('red-background', 'green-background');
     hangmanImage.src = `src/images/hangman0.png`;
 
     currentWord = getRandomWord();
@@ -68,14 +74,22 @@ function updateLivesDisplay() {
     livesDisplay.textContent = `Vidas restantes: ${lives}`;
 }
 
+function updateBackground() {
+    const redIntensity = Math.min(255, (maxLives - lives) * 50);
+    document.body.style.backgroundColor = `rgb(${redIntensity}, 0, 0)`;
+}
+
 function guessLetter(letter, button) {
     if (gameOver) return; // No hacer nada si el juego ya terminó
 
     if (currentWord.includes(letter)) {
         guessedLetters.push(letter);
+        correctSound.play();
     } else {
         wrongLetters.push(letter);
         lives--;
+        errorSound.play();
+        updateBackground(); // Actualiza el fondo a medida que se pierden vidas
     }
 
     // Deshabilita el botón de la letra seleccionada
@@ -89,16 +103,19 @@ function guessLetter(letter, button) {
 
     // Verificar si el jugador ha ganado o perdido
     if (lives === 0) {
-        // Cambia el fondo a rojo y muestra la imagen de derrota
-        document.body.classList.add('red-background');
-        hangmanImage.src = `src/images/hangman5.png`;
+        gameOver = true;
+        defeatSound.play();
+        document.body.style.backgroundColor = 'red'; // Fondo rojo al perder
 
-        // Muestra el mensaje de alerta después de cambiar el fondo y la imagen
         setTimeout(() => {
             alert('¡Perdiste! La palabra era ' + currentWord);
             initializeGame(); // Reinicia el juego
         }, 1000);  // Retraso de 1 segundo antes de mostrar la alerta
     } else if (!wordDisplay.textContent.includes('_')) {
+        gameOver = true;
+        victorySound.play();
+        document.body.style.backgroundColor = 'green'; // Fondo verde al ganar
+
         setTimeout(() => {
             alert('¡Ganaste! La palabra era ' + currentWord);
             initializeGame(); // Reinicia el juego
