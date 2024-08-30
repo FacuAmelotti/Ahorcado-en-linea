@@ -27,10 +27,10 @@ const defeatSound = new Audio('src/audio/derrota.mp3');
 // Array de colores para cada paso
 const backgroundColors = [
     'white',   // Color inicial
-    '#9d9595', // Primer error
+    '#555050', // Primer error
     '#493a3a', // Segundo error
-    '#331d1d', // Tercer error
-    '#452020', // Cuarto error
+    '#613434', // Tercer error
+    '#331d1d', // Cuarto error
     '#3f0c0c'  // Quinto error (muerte)
 ];
 
@@ -120,7 +120,7 @@ function guessLetter(letter, button) {
         setTimeout(() => {
             alert('¡Perdiste! La palabra era ' + currentWord);
             initializeGame(); // Reinicia el juego
-        }, 1000);  // Retraso de 1 segundo antes de mostrar la alerta
+        }, 2650);  // Retraso de 1 segundo antes de mostrar la alerta
     } else if (!wordDisplay.textContent.includes('_')) {
         gameOver = true;
         victorySound.play();
