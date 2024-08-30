@@ -25,7 +25,7 @@ function getRandomWord() {
 function initializeGame() {
     // Reset the background color and hide the defeat image
     document.body.classList.remove('red-background');
-    hangmanImage.src = `frontend/src/images/hangman0.png`;
+    hangmanImage.src = `src/images/hangman0.png`;
 
     currentWord = getRandomWord();
     guessedLetters = [];
@@ -60,7 +60,7 @@ function displayWrongLetters() {
 }
 
 function updateHangmanImage() {
-    hangmanImage.src = `frontend/src/images/hangman${maxLives - lives}.png`;
+    hangmanImage.src = `src/images/hangman${maxLives - lives}.png`;
     console.log(hangmanImage.src);  // Verifica la ruta en la consola del navegador
 }
 
@@ -91,7 +91,7 @@ function guessLetter(letter, button) {
     if (lives === 0) {
         // Cambia el fondo a rojo y muestra la imagen de derrota
         document.body.classList.add('red-background');
-        hangmanImage.src = `frontend/src/images/hangman5.png`;
+        hangmanImage.src = `src/images/hangman5.png`;
 
         // Muestra el mensaje de alerta después de cambiar el fondo y la imagen
         setTimeout(() => {
