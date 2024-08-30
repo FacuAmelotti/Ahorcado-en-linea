@@ -26,12 +26,12 @@ const defeatSound = new Audio('src/audio/derrota.mp3');
 
 // Array de colores para cada paso
 const backgroundColors = [
-    'white',   // Color inicial
-    '#555050', // Primer error
+    '#d7d6d6',   // Color inicial
+    '#6f6c6c', // Primer error
     '#493a3a', // Segundo error
-    '#613434', // Tercer error
-    '#331d1d', // Cuarto error
-    '#3f0c0c'  // Quinto error (muerte)
+    '#552b2b', // Tercer error #552b2b
+    '#3b1a1a', // Cuarto error
+    '#310909'  // Quinto error (muerte)
 ];
 
 function getRandomWord() {
@@ -124,7 +124,7 @@ function guessLetter(letter, button) {
     } else if (!wordDisplay.textContent.includes('_')) {
         gameOver = true;
         victorySound.play();
-        document.body.style.backgroundColor = '#547f61'; // Fondo verde al ganar
+        document.body.style.backgroundColor = '#387337'; // Fondo verde al ganar
 
         setTimeout(() => {
             alert('¡Ganaste! La palabra era ' + currentWord);
