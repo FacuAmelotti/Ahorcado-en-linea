@@ -19,10 +19,10 @@ const wrongLettersDisplay = document.getElementById('wrongLetters');
 const livesDisplay = document.getElementById('livesDisplay'); // Elemento para vidas
 
 // Cargar sonidos
-const correctSound = new Audio('src/audio/correcto.mp3');
-const errorSound = new Audio('src/audio/error.mp3');
-const victorySound = new Audio('src/audio/victoria.mp3');
-const defeatSound = new Audio('src/audio/derrota.mp3');
+const correctSound = new Audio('./frontend/src/audio/correcto.mp3');
+const errorSound = new Audio('./frontend/src/audio/error.mp3');
+const victorySound = new Audio('./frontend/src/audio/victoria.mp3');
+const defeatSound = new Audio('./frontend/src/audio/derrota.mp3');
 
 // Array de colores para cada paso
 const backgroundColors = [
@@ -41,7 +41,7 @@ function getRandomWord() {
 function initializeGame() {
     // Reinicia el fondo al color inicial y oculta la imagen de derrota
     document.body.style.backgroundColor = backgroundColors[0];
-    hangmanImage.src = `src/images/hangman0.png`;
+    hangmanImage.src = `./frontend/src/images/hangman0.png`;
 
     currentWord = getRandomWord();
     guessedLetters = [];
@@ -76,7 +76,7 @@ function displayWrongLetters() {
 }
 
 function updateHangmanImage() {
-    hangmanImage.src = `src/images/hangman${maxLives - lives}.png`;
+    hangmanImage.src = `./frontend/src/images/hangman${maxLives - lives}.png`;
     console.log(hangmanImage.src);  // Verifica la ruta en la consola del navegador
 }
 
