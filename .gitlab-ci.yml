@@ -16,4 +16,4 @@ pages:
     paths:
       - public
   only:
-    - main  # O la rama en la que estás trabajando
+    - main
